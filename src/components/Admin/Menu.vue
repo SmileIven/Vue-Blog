@@ -1,76 +1,99 @@
-<template lang="html">
-  <el-row class="panel">
-    <el-row class="top">
-      <el-col :span='23' class="panel-top" :push="1">
-        <!-- push就是相对定位了 -->
-        <!--  offset设置的是margin-lef-->
-          <el-col :span="20" style='font-size:26px'>
-            <span>AD<i style="color:#20a0ff">MIN</i></span>
-          </el-col>
-          <el-col :span='4' class='rightbar'>
-            <el-dropdown trigger="click">
-              <span class="el-dropdown-link" style="color:#c0ccda;cursor: pointer;font-weight:700">
-                更多操作<i class="el-icon-caret-bottom el-icon--right"></i>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item @click.native="toHome">博客首页</el-dropdown-item>
-                <el-dropdown-item divided @click.native="con">退出登录</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </el-col>
-      </el-col>
-    </el-row>
-    <!-- 顶部导航结束 -->
-    <el-row  class="panel-center">
-      <el-col :span="5">
-        <el-menu  theme="dark"  router :default-active="currentPath">
-            <template v-for="(item,index) in $router.options.routes" v-if='!item.hidden'>
-                <el-submenu :index="index+''">
-                  <template slot="title"><i :class="item.iconCls" ></i>{{item.name}}</template>
-                  <el-menu-item v-for="child in item.children" :index="item.path+'/'+child.path" v-if="!child.hidden">{{child.name}}</el-menu-item>
-                </el-submenu>
-            </template>
-        </el-menu>
-      </el-col>
-        <!-- 左侧导航结束 -->
-      <el-col :span='19' class="panel-c-c">
-        <el-row>
-          <el-col :span='24' class="breadcrumb">
-            <el-breadcrumb separator="/" style='float:right'>
-                  <!-- <el-breadcrumb-item :to="{path:'/admin/articleList'}">首页</el-breadcrumb-item> -->
-                  <el-breadcrumb-item :to="{path:'/admin/articleList'}">{{currentPathNameParent}}</el-breadcrumb-item>
-                  <el-breadcrumb-item>{{currentPathName}}</el-breadcrumb-item>
-            </el-breadcrumb>
-          </el-col>
-        </el-row>
-        <router-view></router-view>
-      </el-col>
-      <!--  面包屑导航结束-->
-    </el-row>
-  </el-row>
+<template>
+  <div>
+<el-row class="tac">
+  <el-col :span="12">
+    <h5>默认颜色</h5>
+    <el-menu
+      default-active="2"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose">
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>导航一</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title">分组一</template>
+          <el-menu-item index="1-1">选项1</el-menu-item>
+          <el-menu-item index="1-2">选项2</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group title="分组2">
+          <el-menu-item index="1-3">选项3</el-menu-item>
+        </el-menu-item-group>
+        <el-submenu index="1-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-menu-item index="2">
+        <i class="el-icon-menu"></i>
+        <span slot="title">导航二</span>
+      </el-menu-item>
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-document"></i>
+        <span slot="title">导航三</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <i class="el-icon-setting"></i>
+        <span slot="title">导航四</span>
+      </el-menu-item>
+    </el-menu>
+  </el-col>
+  <el-col :span="12">
+    <h5>自定义颜色</h5>
+    <el-menu
+      default-active="2"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b">
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>导航一</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title">分组一</template>
+          <el-menu-item index="1-1">选项1</el-menu-item>
+          <el-menu-item index="1-2">选项2</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group title="分组2">
+          <el-menu-item index="1-3">选项3</el-menu-item>
+        </el-menu-item-group>
+        <el-submenu index="1-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-menu-item index="2">
+        <i class="el-icon-menu"></i>
+        <span slot="title">导航二</span>
+      </el-menu-item>
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-document"></i>
+        <span slot="title">导航三</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <i class="el-icon-setting"></i>
+        <span slot="title">导航四</span>
+      </el-menu-item>
+    </el-menu>
+  </el-col>
+</el-row>
+</div>
 </template>
-
 
 <script>
 export default {
-  data() {
-    return {
-      currentPath: "/admin/articleList",
-      currentPathNameParent: "文章管理",
-      currentPathName: "文章列表"
-    };
-  },
   methods: {
-    con() {
-      this.$confirm("确认退出吗?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      })
-        .then(() => {
-          this.$store.dispatch("UserLogout");
-        })
-        .catch(() => {});
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     }
   }
 };
