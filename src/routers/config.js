@@ -1,7 +1,8 @@
-import Menu from '../components/Admin/Menu.vue'
+import Index from '../components/Admin/Index.vue'
 
 export default {
-  router: [
-    { path: '/admin', redirect: Menu }
+  routes: [
+    { path: '*', component: Index }
+    
   ]
 }
