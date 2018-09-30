@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-left:600px;padding-top:350px;color:green;font-size:30px">
      {{msg}}
   </div>
 </template>
@@ -7,7 +7,7 @@
 export default {
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      msg: "欢迎登陆接口管理平台"
     };
   }
 };

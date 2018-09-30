@@ -4,8 +4,8 @@
       <el-col :span='23' class="panel-top" :push="1">
         <!-- push就是相对定位了 -->
         <!--  offset设置的是margin-lef-->
-          <el-col :span="20" style='font-size:26px'>
-            <span>AD<i style="color:#20a0ff">MIN</i></span>
+          <el-col :span="20" style='font-size:30px'>
+            <span><span style="color:#20a0ff">接口</span>管理平台</span>
           </el-col>
           <el-col :span='4' class='rightbar'>
             <el-dropdown trigger="click">
@@ -25,7 +25,7 @@
         <el-menu default-active="3" class="el-menu-vertical-demo"  background-color="#324057" text-color="#fff" active-text-color="#ffd04b">
             <el-menu-item index="1">
                     <i class="icon iconfont icon-iconfont-wo" style="vertical-align:moddle"></i>
-                    <span slot="title">用户列表</span>
+                    <router-link  tag="span" slot="title" :to="{path:'/user'}" style="text-decoraction:none;">用户列表</router-link>
             </el-menu-item>
             <el-submenu index="2">
                 <span slot="title" >
@@ -53,6 +53,10 @@
       </el-col>
         <!-- 左侧导航结束 -->
       <el-col :span='21' class="panel-c-c">
+         <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+        </el-breadcrumb>
         <el-row>
           <el-col :span='24' class="breadcrumb">
            
