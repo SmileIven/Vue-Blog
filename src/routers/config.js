@@ -10,7 +10,6 @@ export default {
       component:Admin,
       children: [
         { path: '', component: Welcome },
-
       ]
     },
     {
