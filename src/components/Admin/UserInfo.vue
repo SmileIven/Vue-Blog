@@ -1,6 +1,6 @@
 <template>
   <el-table
-    :data="tableData"
+    :data="tableData" stripe="true" 
     style="width:70%;border-collapse: collapse;border-spacing:0;">
     <el-table-column
       label="日期"
