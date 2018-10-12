@@ -20,8 +20,9 @@
       </el-col>
     </el-row>
     <!-- 顶部导航结束 -->
+    
     <el-row  class="panel-center">
-      <el-col :span="3">
+      <el-col :span="3"  style="width:12.6%" >
         <el-menu default-active="3" class="el-menu-vertical-demo"  background-color="#324057" text-color="#fff" active-text-color="#ffd04b">
             <el-menu-item index="1">
                     <i class="icon iconfont icon-iconfont-wo" style="vertical-align:moddle"></i>
@@ -53,10 +54,6 @@
       </el-col>
         <!-- 左侧导航结束 -->
       <el-col :span='21' class="panel-c-c">
-         <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-        </el-breadcrumb>
         <el-row>
           <el-col :span='24' class="breadcrumb">
            
